@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="img/front.png" alt="HolbertonBnB logo">
+</p>
+
 <h1 align="centre">HolbertonBnB</h1>
 <p align="centre">AirBnB Clone</p>
 
@@ -9,3 +13,9 @@ HolbertonBnB is a complete web application that intergrates; a database storage,
 This project currently only implements the back end console.
 
 ## Classes
+
+## Storage
+
+## The console
+
+## Testing :check_list:
