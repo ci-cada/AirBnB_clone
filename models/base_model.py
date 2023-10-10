@@ -8,7 +8,7 @@ import models
 class BaseModel:
     """base class for hbnb"""
     def __init__(self, *args, **kwargs):
-        """initialization of bse model variables"""
+        """initialization of base model variables"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
