@@ -18,7 +18,7 @@ HolbertonBnB is a complete web application that intergrates; a database storage,
 This project currently only implements the back end console.
 
 
-## Classes :incoming_envelope
+## Classes :incoming_envelope:
 
 |     | BaseModel | FileStorage | User | State | City | Amenity | Place | Review |
 | --- | --------- | ----------- | -----| ----- | -----| ------- | ----- | ------ |
