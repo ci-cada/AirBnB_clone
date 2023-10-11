@@ -25,7 +25,7 @@ This project currently only implements the back end console.
 The console is a command line interpreter that permits management of the back end of HolbertonBnB i.e. creating updating and destroying.
 It can be used to handle and manipulate all the classes used by the application.
 
-## Installation
+### Installation
 To use the AirBnB Clone console, follow these steps:
   1. Clone the repository:
 
