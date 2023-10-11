@@ -17,6 +17,7 @@ HolbertonBnB is a complete web application that intergrates; a database storage,
 
 This project currently only implements the back end console.
 
+
 ## Classes :incoming_envelope
 
 |     | BaseModel | FileStorage | User | State | City | Amenity | Place | Review |
@@ -26,13 +27,17 @@ This project currently only implements the back end console.
 | *Public Class Attribute* | | | `email`<br>`password`<br>`first_name`<br>`last_name` | `name` | `state_id`<br>`name` | `name` | `city_id`<br>`user_id`<br>`name`<br>`description`<br>`number_rooms`<br>`number_bathrooms`<br>`max_guest`<br>`price_by_night`<br>`latitude`<br>`longitude`<br>`amenity_ids` | `place_id`<br>`user_id`<br>`text` |
 | *Private Class Attribute* | | `file_path`<br>`objects` | | | | | | |
 
+
 ## Storage :floppy_disk:
+
+
 
 
 ## The console :globe_with_meridians:
 
 The console is a command line interpreter that permits management of the back end of HolbertonBnB i.e. creating updating and destroying.
 It can be used to handle and manipulate all the classes used by the application.
+
 
 ### Installation :inbox_tray:
 
@@ -52,6 +57,7 @@ To use the AirBnB Clone console, follow these steps:
   ```
   python3 console.py
   ```
+
 
 ### Execution :crossed_flags:
 
@@ -94,6 +100,8 @@ $ ./console.py
 (hbnb) EOF
 $
 ```
+
+
 ### Console commands :video_game:
 
 The HolbertonBnB Console supports the following commands:
@@ -260,6 +268,7 @@ c3-f4bf-425e-b1d4-165f52c6ff81) {'updated_at': datetime.datetime(2019, 2, 17, 2
 ), 'id': 'fce2124c-8537-489b-956e-22da455cbee8'}"]
 (hbnb)
 ```
+
 
 ## Testing :test_tube:
 
