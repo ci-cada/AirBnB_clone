@@ -11,21 +11,21 @@
 
 ---
 
-## Description of the project
+## Description of the project :house:
 
 HolbertonBnB is a complete web application that intergrates; a database storage, a back-end API that provides a communication and a front-end interfacing as a clone of AirBnB.
 
 This project currently only implements the back end console.
 
-## Classes
+## Classes :class_room:
 
-## Storage
+## Storage :suitcase:
 
-## The console
+## The console :controller:
 The console is a command line interpreter that permits management of the back end of HolbertonBnB i.e. creating updating and destroying.
 It can be used to handle and manipulate all the classes used by the application.
 
-### Installation
+### Installation :drop_box:
 To use the AirBnB Clone console, follow these steps:
   1. Clone the repository:
 
@@ -43,7 +43,7 @@ To use the AirBnB Clone console, follow these steps:
   python3 console.py
   ```
 
-### Execution
+### Execution :tick:
 The console can run both interactively and non-interactively.
 
 To run the console in interactive mode, run the file `console.py` by itself:
@@ -83,7 +83,7 @@ $ ./console.py
 (hbnb) EOF
 $
 ```
-### Console commands
+### Console commands :joy_stick:
 
 The HolbertonBnB Console supports the following commands:
 
