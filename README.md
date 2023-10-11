@@ -87,3 +87,14 @@ $
 
 
 ## Testing
+To run the entire test suite simultaneously:
+
+```
+python3 unittest -m discover tests
+```
+
+Alternatively, you can specify a single test to run:
+
+```
+python3 unittest -m tests/test_console.py
+```
