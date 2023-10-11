@@ -2,8 +2,8 @@
   <img src="img/front.png" alt="HolbertonBnB logo">
 </p>
 
-<h1 align="centre">HolbertonBnB</h1>
-<p align="centre">AirBnB Clone</p>
+<h1 align="center">HolbertonBnB</h1>
+<p align="center">AirBnB Clone</p>
 
 ---
 
