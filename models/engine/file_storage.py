@@ -37,3 +37,15 @@ class FileStorage:
                                                    json_to_python)
         except FileNotFoundError:
             pass
+
+@staticmethod
+def json_to_python(json_dict):
+    """static method to pass json loads"""
+    if "__class__" in json_dict:
+        class_name = json_dict["__class__"]
+        if class_name == "BaseModel":
+            return BaseModel(**json_dict)
+        else:
+            return json_dict
+    else:
+        return json_dict
