@@ -29,7 +29,10 @@ This project currently only implements the back end console.
 
 ## Storage :floppy_disk:
 
-
+* The classes specified above are handled by an abstracted storage engine defined in the `FileStorage` class.
+* Every time the back-end is initialized, the HolbertonBnB instantiates an instance of `FileStorage` called `storage`.
+* The `storage` object is loaded/reloaded from any class instance stored in the JSON file `file.json`.
+* As class instances are created, updated and deleted the `storage` object registers the corresponding changes in the JSON file.
 
 
 ## The console :globe_with_meridians:
