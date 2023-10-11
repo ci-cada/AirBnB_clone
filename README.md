@@ -86,7 +86,7 @@ $
 ### Console commands
 
 
-## Testing
+## Testing :test tube:
 To run the entire test suite simultaneously:
 
 ```
