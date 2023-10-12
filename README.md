@@ -12,7 +12,7 @@
 
 ## Description of the project :book:
 ---
-HolbertonBnB is a complete web application that intergrates; a database storage, a back-end API that provides a communication and a front-end interfacing as a clone of AirBnB.
+HolbertonBnB is a complete web application that intergrates; a database storage, a back-end API that provides a communication interface and a front-end interfacing as a clone of AirBnB.
 
 This project currently only implements the back end console.
 
