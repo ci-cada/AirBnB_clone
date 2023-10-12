@@ -26,7 +26,7 @@ class FileStorage:
     def save(self):
         with open(FileStorage.__file_path, mode="w", encoding="utf-8") as f:
             json_str = json.dumps(FileStorage.__objects,
-                                  defualt=lambda obj: obj.to_dict())
+                                  default=lambda obj: obj.to_dict())
             f.write(json_str)
 
     def reload(self):
@@ -37,15 +37,14 @@ class FileStorage:
                                                    json_to_python)
         except FileNotFoundError:
             pass
-
-@staticmethod
-def json_to_python(json_dict):
-    """static method to pass json loads"""
-    if "__class__" in json_dict:
-        class_name = json_dict["__class__"]
-        if class_name == "BaseModel":
-            return BaseModel(**json_dict)
-        else:
-            return json_dict
-    else:
-        return json_dict
+    @staticmethod
+    def json_to_python(json_dict):
+            """static method to pass json loads"""
+            if "__class__" in json_dict:
+                class_name = json_dict["__class__"]
+                if class_name == "BaseModel":
+                    return BaseModel(**json_dict)
+                else:
+                    return json_dict
+            else:
+                return json_dict
