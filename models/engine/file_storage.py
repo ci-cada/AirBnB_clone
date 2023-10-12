@@ -38,6 +38,7 @@ class FileStorage():
             FileStorage.__objects[key] = obj
 
     def save(self):
+<<<<<<< HEAD
         """
         public instance method that serializes __objects
         to the JSON file (path: __file_path).
@@ -50,6 +51,12 @@ class FileStorage():
             new_dict[key] = value.to_dict().copy()
         with open(FileStorage.__file_path, mode='w') as my_file:
             json.dump(new_dict, my_file)
+=======
+        with open(FileStorage.__file_path, mode="w", encoding="utf-8") as f:
+            json_str = json.dumps(FileStorage.__objects,
+                                  default=lambda obj: obj.to_dict())
+            f.write(json_str)
+>>>>>>> aef67c145ad112f43cd0bf8bd7fb32b26eae7fff
 
     def reload(self):
         """
@@ -67,3 +74,17 @@ class FileStorage():
 
         except FileNotFoundError:
             pass
+<<<<<<< HEAD
+=======
+    @staticmethod
+    def json_to_python(json_dict):
+            """static method to pass json loads"""
+            if "__class__" in json_dict:
+                class_name = json_dict["__class__"]
+                if class_name == "BaseModel":
+                    return BaseModel(**json_dict)
+                else:
+                    return json_dict
+            else:
+                return json_dict
+>>>>>>> aef67c145ad112f43cd0bf8bd7fb32b26eae7fff
