@@ -27,17 +27,17 @@ class HBNBCommand(cmd.Cmd):
     ]
 
     def do_quit(self, args):
-        '''<Quit> Command To Exit The Program'''
+        """<Quit> Command To Exit The Program"""
         return True
 
     def do_EOF(self, args):
-        '''Handles end of file'''
+        """Handles end of file"""
         return True
 
     def emptyline(self):
-        '''dont execute anything when user
+        """don't execute anything when user
            press enter an empty line
-        '''
+        """
         pass
 
 
