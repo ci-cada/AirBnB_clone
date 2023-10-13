@@ -7,6 +7,10 @@ import models
 
 class BaseModel:
     """base class for hbnb"""
+    id = None
+    updated_at = None
+    created_at = None
+
     def __init__(self, *args, **kwargs):
         """initialization of base model variables"""
         if kwargs:
