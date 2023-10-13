@@ -21,7 +21,8 @@ classes = {
         "Review",
         "State",
         "User"
-    }
+        }
+dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
 
 
 class HBNBCommand(cmd.Cmd):
@@ -46,29 +47,12 @@ class HBNBCommand(cmd.Cmd):
         """display help informaiton about the commands"""
         cmd.Cmd.do_help(self, args)
 
-    def do_create(self, args):
-        """
-        Usage: create<class>\n
-        Create a new class instance and print its id
-        """
-        args = args.split()
-        if not args:
-            print("** class name missing **")
-            return
-        class_name = args[0]
-        if class_name not in classes:
-            print("** class doesn't exist **")
-            return
-        new_instance = classes[class_name]()
-        new_instance.save()
-        print(new_instance.id)
 
     def do_show(self, args):
         """Usage: show <class> <id> or <class>.show(<id>)\n     
         Display the string representation of a class instance of
         a given id.
         """
-
         args = args.split()
         if not args:
             print("** class name missing **")
