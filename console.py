@@ -64,9 +64,10 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
     def do_show(self, args):
-        "Usage: show <class> <id> or <class>.show(<id>)\n        "
-        "Display the string representation of a class instance of"
-        " a given id."
+        """Usage: show <class> <id> or <class>.show(<id>)\n     
+        Display the string representation of a class instance of
+        a given id.
+        """
 
         args = args.split()
         if not args:
