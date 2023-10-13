@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Method Command Interpreter"""
 import cmd
 import shlex
