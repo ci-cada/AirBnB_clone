@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-
-"""Defines the HBnB console"""
-
 import cmd
 import models
 from models.base_model import BaseModel
@@ -116,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
         for key, value in models.storage.all().items():
             if type(value).__name__ == classname:
                 counter += 1
-        return (counter)
+        return counter
 
 
 if __name__ == "__main__":
