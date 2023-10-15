@@ -21,14 +21,14 @@ classes = {
         "Review": Review
         }
 
+
 class HBNBCommand(cmd.Cmd):
     """ hbnb shell """
     prompt = '(hbnb) '
-    
+
     def emptyline(self):
         """empty line"""
         pass
-
 
     def do_quit(self, arg):
         """Quit command to exit the program
@@ -176,10 +176,11 @@ class HBNBCommand(cmd.Cmd):
             for key, instance in all_instances.items():
                 print([str(instance)])
 
-    def do_update(self,args):
+    def do_update(self, args):
         """
         Usage: update <class name> <id> <attribute name> "<attribute value>"
-        Updates an instance based on the class name and id by adding or updating attribute
+        Updates an instance based on the class name
+        and id by adding or updating attribute
         """
         args = args.split()
         class_name = args[0]
@@ -203,9 +204,10 @@ class HBNBCommand(cmd.Cmd):
             if instance_id in key:
                 found = True
                 if len(args) < 5:
-                    setattr(instance, attribute_name, attribute_value.strip('"'))
+                    setattr(instance, attribute_name,
+                            attribute_value.strip('"'))
                     models.storage.save()
-        
+
         if not found:
             print("** no instance found **")
 
