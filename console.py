@@ -129,6 +129,32 @@ class HBNBCommand(cmd.Cmd):
         new_instance.save()
         print(new_instance.id)
 
+    def do_show(self, args):
+        """
+        Usage: show <class> <id> or <class>.show(<id>)
+        """
+        args = args.split()
+        if not args:
+            print("** class name missing **")
+            return
+        class_name = args[0]
+        if class_name not in classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        class_id = args[1]
+        all_instances = models.storage.all()
+        found = False
+        for key, instance in all_instances.items():
+            if class_name in key and class_id in key:
+                found = True
+                print(instance)
+                break
+            if not found:
+                print("**no instance found")
+
 
     @staticmethod
     def count_class(classname):
