@@ -11,14 +11,20 @@ from models.user import User
 from datetime import datetime
 from shlex import shlex
 
+classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
+        }
 
 class HBNBCommand(cmd.Cmd):
     """ hbnb shell """
     prompt = '(hbnb) '
-    classes = {'BaseModel': BaseModel, 'State': State, 'City': City,
-               'Amenity': Amenity, 'Place': Place, 'Review': Review,
-               'User': User}
-
+    
     def emptyline(self):
         """empty line"""
         pass
@@ -105,6 +111,24 @@ class HBNBCommand(cmd.Cmd):
     def postloop(self):
         """print new line after each loop"""
         print()
+
+    def do_create(self, args):
+        """
+        Usage: create <class>
+        Creates a new instance of BaseModel, and prints the id
+        """
+        args = args.split()
+        if not args:
+            print("** class name missing **")
+            return
+        class_name = args[0]
+        if class_name not in classes:
+            print("** class doesn't exist **")
+            return
+        new_instance = classes[class_name]()
+        new_instance.save()
+        print(new_instance.id)
+
 
     @staticmethod
     def count_class(classname):
