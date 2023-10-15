@@ -239,9 +239,6 @@ class HBNBCommand(cmd.Cmd):
         attribute_name = args[2]
         attribute_value = args[3]
 
-
-        
-
     @staticmethod
     def count_class(classname):
         """count number of objects of type class name"""
