@@ -29,27 +29,6 @@ class HBNBCommand(cmd.Cmd):
         """empty line"""
         pass
 
-    def do_show(self, arg):
-        """Show instance based on id"""
-        classname, obj_id = None, None
-        args = arg.split(' ')
-        if len(args) > 0:
-            classname = args[0]
-        if len(args) > 1:
-            obj_id = args[1]
-        if not classname:
-            print('** class name missing **')
-        elif not obj_id:
-            print('** instance id missing **')
-        elif not self.classes.get(classname):
-            print("** class doesn't exist **")
-        else:
-            item = classname + "." + obj_id
-            obj = models.storage.all().get(item)
-            if not obj:
-                print('** no instance found **')
-            else:
-                print(obj)
 
     def do_quit(self, arg):
         """Quit command to exit the program
@@ -152,8 +131,8 @@ class HBNBCommand(cmd.Cmd):
                 found = True
                 print(instance)
                 break
-            if not found:
-                print("**no instance found")
+        if not found:
+            print("**no instance found**")
 
     def do_destroy(self, args):
         """
