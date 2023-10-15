@@ -182,6 +182,22 @@ class HBNBCommand(cmd.Cmd):
         if not found:
             print("**no instance found**")
 
+    def do_all(self, args):
+        """
+        Usage: all or all <class> or <class>.all()
+        """
+        args = args.split()
+        class_name = args[0]
+        if class_name:
+            if class_name not in classes:
+                print("** class doesn't exist **")
+                return
+        else:
+            all_instances = models.storage.all()
+            for key, instance in all_instances.items():
+                print([str(instance)])
+
+
     @staticmethod
     def count_class(classname):
         """count number of objects of type class name"""
