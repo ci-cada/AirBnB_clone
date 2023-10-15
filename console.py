@@ -12,6 +12,20 @@ from datetime import datetime
 from shlex import shlex
 
 classes = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "State": State,
+    "City": City,
+    "Amenity": Amenity,
+    "Place": Place,
+    "Review": Review
+}
+
+
+class HBNBCommand(cmd.Cmd):
+    """ hbnb shell """
+    prompt = '(hbnb) '
+    classes = {
         "BaseModel": BaseModel,
         "User": User,
         "State": State,
@@ -19,12 +33,7 @@ classes = {
         "Amenity": Amenity,
         "Place": Place,
         "Review": Review
-        }
-
-
-class HBNBCommand(cmd.Cmd):
-    """ hbnb shell """
-    prompt = '(hbnb) '
+    }
 
     def emptyline(self):
         """empty line"""
@@ -39,6 +48,18 @@ class HBNBCommand(cmd.Cmd):
         """EOF to exit the program
         """
         return True
+
+    def do_create(self, classname=None):
+        """Creates a new instance of BaseModel, saves it and prints the id"""
+        if not classname:
+            print('** class name missing **')
+        elif not self.classes.get(classname):
+            print('** class doesn\'t exist **')
+        else:
+            obj = self.clslist[classname]()
+            models.storage.save()
+            print(obj.id)
+
     def do_destroy(self, arg):
         """destroy instance based on id
         """
