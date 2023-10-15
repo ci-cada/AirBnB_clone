@@ -197,6 +197,50 @@ class HBNBCommand(cmd.Cmd):
             for key, instance in all_instances.items():
                 print([str(instance)])
 
+    def do_update(self,args):
+        """
+        Usage: update <class name> <id> <attribute name> "<attribute value>"
+        Updates an instance based on the class name and id by adding or updating attribute
+        """
+        args = args.split()
+        class_name = args[0]
+
+        if class_name not in classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 1:
+            print("** class name missing **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        instance_id = args[1]
+        found = False
+        key = "{}.{}".format(class_name, instance_id)
+        all_instances = models.storage.all()
+
+        for key, instance in all_instances.items():
+            if instance_id in key:
+                found = True
+                if len(args) < 5:
+                    setattr(instance, attribute_name, attribute_value.strip('"'))
+                    models.storage.save()
+        
+        if not found:
+            print("** no instance found **")
+
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        attribute_name = args[2]
+        attribute_value = args[3]
+
+
+        
 
     @staticmethod
     def count_class(classname):
