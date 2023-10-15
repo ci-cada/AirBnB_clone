@@ -156,6 +156,7 @@ class HBNBCommand(cmd.Cmd):
                 print("**no instance found")
 
 
+
     @staticmethod
     def count_class(classname):
         """count number of objects of type class name"""
