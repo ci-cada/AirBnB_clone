@@ -155,7 +155,32 @@ class HBNBCommand(cmd.Cmd):
             if not found:
                 print("**no instance found")
 
-
+    def do_destroy(self, args):
+        """
+        Usage: destroy <class> <id> or <class>.destroy(<id>)
+        """
+        args = args.split()
+        if not args:
+            print("** class name missing **")
+            return
+        class_name = args[0]
+        if class_name not in classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        found = False
+        instance_id = args[1]
+        key = "{}.{}".format(class_name, instance_id)
+        all_instances = models.tsorage.all()
+        instance = all_instances.pop(key)
+        if instance:
+            del (instance)
+            models.storage.save()
+            found = True
+        if not found:
+            print("**no instance found**")
 
     @staticmethod
     def count_class(classname):
