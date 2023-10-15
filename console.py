@@ -39,6 +39,79 @@ class HBNBCommand(cmd.Cmd):
         """EOF to exit the program
         """
         return True
+    def do_destroy(self, arg):
+        """destroy instance based on id
+        """
+        classname, obj_id = None, None
+        args = arg.split(' ')
+        if len(args) > 0:
+            classname = args[0]
+        if len(args) > 1:
+            obj_id = args[1]
+        if not classname:
+            print('** class name missing **')
+        elif not obj_id:
+            print('** instance id missing **')
+        elif not self.classes.get(classname):
+            print("** class doesn't exist **")
+        else:
+            k = classname + "." + obj_id
+            obj = models.storage.all().get(k)
+            if not obj:
+                print('** no instance found **')
+            else:
+                del models.storage.all()[k]
+                models.storage.save()
+
+    def do_all(self, arg):
+        """Prints all instances based or not on the class name
+        """
+        if not arg:
+            print([str(v) for k, v in models.storage.all().items()])
+        else:
+            if not self.clslist.get(arg):
+                print("** class doesn't exist **")
+                return False
+            print([str(v) for k, v in models.storage.all().items()
+                   if type(v) is self.clslist.get(arg)])
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id
+        """
+        classname, obj_id, atrr_name, attr_val = None, None, None, None
+        updatetime = datetime.now()
+        args = arg.split(' ', 3)
+        if len(args) > 0:
+            classname = args[0]
+        if len(args) > 1:
+            obj_id = args[1]
+        if len(args) > 2:
+            atrr_name = args[2]
+        if len(args) > 3:
+            attr_val = list(shlex(args[3]))[0].strip('"')
+        if not classname:
+            print('** class name missing **')
+        elif not obj_id:
+            print('** instance id missing **')
+        elif not atrr_name:
+            print('** attribute name missing **')
+        elif not attr_val:
+            print('** value missing **')
+        elif not self.clslist.get(classname):
+            print("** class doesn't exist **")
+        else:
+            k = classname + "." + obj_id
+            obj = models.storage.all().get(k)
+            if not obj:
+                print('** no instance found **')
+            else:
+                if hasattr(obj, atrr_name):
+                    attr_val = type(getattr(obj, atrr_name))(attr_val)
+                else:
+                    attr_val = self.getType(attr_val)(attr_val)
+                setattr(obj, atrr_name, attr_val)
+                obj.updated_at = updatetime
+                models.storage.save()
 
     def default(self, line):
         """ class command handler """
@@ -152,10 +225,10 @@ class HBNBCommand(cmd.Cmd):
         found = False
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        all_instances = models.tsorage.all()
+        all_instances = models.storage.all()
         instance = all_instances.pop(key)
         if instance:
-            del (instance)
+            del instance
             models.storage.save()
             found = True
         if not found:
@@ -176,7 +249,7 @@ class HBNBCommand(cmd.Cmd):
             for key, instance in all_instances.items():
                 print([str(instance)])
 
-    def do_update(self, args):
+    def do_update(self, args, attribute_name=None, attribute_value=None):
         """
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         Updates an instance based on the class name
