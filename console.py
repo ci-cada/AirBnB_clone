@@ -59,9 +59,9 @@ class HBNBCommand(cmd.Cmd):
         if class_name not in classes:
             print("** class doesn't exist **")
             return
-        new_instance = classes[class_name]()
-        new_instance.save()
-        print(new_instance.id)
+        new_inst = classes[class_name]()
+        new_inst.save()
+        print(new_inst.id)
 
     def do_show(self, args):
         "Usage: show <class> <id> or <class>.show(<id>)\n        "
@@ -80,9 +80,9 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         class_id = args[1]
-        all_instances = models.storage.all()
+        all_inst = models.storage.all()
         found = False
-        for key, instance in all_instances.items():
+        for key, instance in all_inst.items():
             if class_name in key and class_id in key:
                 found = True
                 print(instance)
@@ -109,8 +109,8 @@ class HBNBCommand(cmd.Cmd):
         found = False
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        all_instances = models.storage.all()
-        instance = all_instances.pop(key)
+        all_inst = models.storage.all()
+        instance = all_inst.pop(key)
         if instance:
             del (instance)
             models.storage.save()
@@ -158,10 +158,10 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
-        instance_id = args[1]
+        inst_id = args[1]
         found = False
-        key = "{}.{}".format(class_name, instance_id)
-        all_instances = models.storage.all()
+        key = "{}.{}".format(class_name, inst_id)
+        all_inst = models.storage.all()
         if len(args) < 3:
             print("** atribute name missing **")
             return
@@ -171,8 +171,8 @@ class HBNBCommand(cmd.Cmd):
         attribute_name = args[2]
         attribute_value = args[3]
 
-        for key, instance in all_instances.items():
-            if instance_id in key:
+        for key, instance in all_inst.items():
+            if inst_id in key:
                 found = True
                 if len(args) < 5:
                     setattr(instance,
