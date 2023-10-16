@@ -233,6 +233,48 @@ class HBNBCommand(cmd.Cmd):
             pass
         finally:
             return line
+        
+    def default(self, line):
+        """ class command handler """
+        ln = line.split('.', 1)
+        if len(ln) < 2:
+            print('*** Unknown syntax:', ln[0])
+            return False
+        class_nm , line = ln[0], ln[1]
+        if class_nm not in list(self.classes.keys()):
+            print('*** Unknown syntax: {}.{}'.format(class_nm, line))
+            return False
+        ln = line.split('(', 1)
+        if len(ln) < 2:
+            print('*** Unknown syntax: {}.{}'.format(class_nm, ln[0]))
+            return False
+        method_name, args = ln[0], ln[1].rstrip(')')
+        if method_name not in ['all', 'count', 'show', 'destroy', 'update']:
+            print('*** Unknown syntax: {}.{}'.format(class_nm, line))
+            return False
+        if method_name == 'all':
+            self.do_all(class_nm)
+        elif method_name == 'count':
+            print(self.count_class(class_nm))
+        elif method_name == 'show':
+            self.do_show(class_nm + " " + args.strip('"'))
+        elif method_name == 'destroy':
+            self.do_destroy(class_nm + " " + args.strip('"'))
+        elif method_name == 'update':
+            curly_l, curly_r = args.find('{'), args.find('}')
+            check = None
+            if args[curly_l:curly_r + 1] != '':
+                check = eval(args[curly_l:curly_r + 1])
+            ln = args.split(',', 1)
+            obj_id, args = ln[0].strip('"'), ln[1]
+            if check and type(check) is dict:
+                self.handle_dict(class_nm, obj_id, check)
+            else:
+                from shlex import shlex
+                args = args.replace(',', ' ', 1)
+                ln = list(shlex(args))
+                ln[0] = ln[0].strip('"')
+                self.do_update(" ".join([class_nm, obj_id, ln[0], ln[1]]))
 
     def do_count(self, args):
         "Usage: count <class> or <class>.count()\n        "
