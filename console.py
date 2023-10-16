@@ -21,7 +21,7 @@ classes = {
         "Place": Place,
         "Review": Review
         }
-dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
+dot_cmd = ['all', 'count', 'show', 'destroy', 'update']
 
 
 class HBNBCommand(cmd.Cmd):
@@ -55,11 +55,11 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        class_name = args[0]
-        if class_name not in classes:
+        class_nm = args[0]
+        if class_nm not in classes:
             print("** class doesn't exist **")
             return
-        new_inst = classes[class_name]()
+        new_inst = classes[class_nm]()
         new_inst.save()
         print(new_inst.id)
 
@@ -72,8 +72,8 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        class_name = args[0]
-        if class_name not in classes:
+        class_nm = args[0]
+        if class_nm not in classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
         all_inst = models.storage.all()
         found = False
         for key, instance in all_inst.items():
-            if class_name in key and class_id in key:
+            if class_nm in key and class_id in key:
                 found = True
                 print(instance)
                 break
@@ -97,8 +97,8 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        class_name = args[0]
-        if class_name not in classes:
+        class_nm = args[0]
+        if class_nm not in classes:
             print("** class doesn't exist **")
             return
 
@@ -107,8 +107,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
         found = False
-        instance_id = args[1]
-        key = "{}.{}".format(class_name, instance_id)
+        inst_id = args[1]
+        key = "{}.{}".format(class_nm, inst_id)
         all_inst = models.storage.all()
         instance = all_inst.pop(key)
         if instance:
@@ -125,19 +125,19 @@ class HBNBCommand(cmd.Cmd):
         "objects."
 
         args = args.split(" ")
-        class_name = args[0]
-        if class_name:
-            if class_name not in classes:
+        class_nm = args[0]
+        if class_nm:
+            if class_nm not in classes:
                 print("** class doesn't exist **")
                 return
         else:
             all_instances = models.storage.all()
             for key, instances in all_instances.items():
                 print([str(instances)])
-        if class_name in classes:
+        if class_nm in classes:
             all_instances = models.storage.all()
             for key, instance in all_instances.items():
-                if class_name in key:
+                if class_nm in key:
                     print([str(instance)])
 
     def do_update(self, args):
@@ -147,12 +147,12 @@ class HBNBCommand(cmd.Cmd):
         "Update a class instance of a given id by adding or updating\n   "
         "     a given attribute key/value pair or dictionary."
         args = args.split()
-        class_name = args[0]
+        class_nm = args[0]
 
         if len(args) < 1:
             print("** class name missing **")
             return
-        if class_name not in classes:
+        if class_nm not in classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -160,7 +160,7 @@ class HBNBCommand(cmd.Cmd):
             return
         inst_id = args[1]
         found = False
-        key = "{}.{}".format(class_name, inst_id)
+        key = "{}.{}".format(class_nm, inst_id)
         all_inst = models.storage.all()
         if len(args) < 3:
             print("** atribute name missing **")
@@ -168,16 +168,16 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 4:
             print("** value missing **")
             return
-        attribute_name = args[2]
-        attribute_value = args[3]
+        attribute_nm = args[2]
+        attribute_vl = args[3]
 
         for key, instance in all_inst.items():
             if inst_id in key:
                 found = True
                 if len(args) < 5:
                     setattr(instance,
-                            attribute_name,
-                            attribute_value.strip('"'))
+                            attribute_nm,
+                            attribute_vl.strip('"'))
                     models.storage.save()
 
         if not found:
@@ -203,7 +203,7 @@ class HBNBCommand(cmd.Cmd):
 
             # isolate and validate <command>
             _cmd = pline[pline.find('.') + 1:pline.find('(')]
-            if _cmd not in dot_cmds:
+            if _cmd not in dot_cmd:
                 raise Exception
 
             # if parantheses contain arguments, parse them
