@@ -36,12 +36,10 @@ class BaseModel:
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
-        
     def save(self):
         """updates 'updated_at' instance with current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
-
 
     def to_dict(self):
         """dict function to return the created dictionary"""
