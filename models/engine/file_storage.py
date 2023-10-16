@@ -68,19 +68,19 @@ class FileStorage():
 
         except FileNotFoundError:
             pass
-    
+
     @staticmethod
     def json_to_python(json_dict):
         """
-        method that takes a dict as an argument and returns an 
+        method that takes a dict as an argument and returns an
         object or the original dict depending on the presence of
         the key "__class__".
         """
-        if "__class__" in json_dict:#checks if dict has the key, indicating that there was an object before serialization
-            class_name = json_dict["__class__"]#class name obtained from value of key
-            if class_name == "BaseModel":#compares class name with basemodel
-                return BaseModel(**json_dict)#if matches, new basemodel object created
+        if "__class__" in json_dict:
+            class_name = json_dict["__class__"]
+            if class_name == "BaseModel":
+                return BaseModel(**json_dict)
             else:
-                return json_dict#otherwise return original dict
+                return json_dict
         else:
-            return json_dict#if theres no class key return original dict
+            return json_dict
