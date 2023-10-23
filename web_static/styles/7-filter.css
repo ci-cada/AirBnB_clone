@@ -1,0 +1,104 @@
+.filters {
+	background-color: white;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	padding-right: 30px;
+}
+
+.filters button {
+	font-size: 18px;
+	color: white;
+	background-color: #ff5a5f;
+	border: none;
+	height: 48px;
+	width: 20%;
+	border-radius: 4px;
+	margin-left: auto;
+}
+
+.filters button:hover {
+	opacity: 90%;
+}
+
+.locations,
+.amenities {
+	height: 100%;
+	width: 25%;
+	padding-left: 48px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 4px;
+	position: relative;
+}
+
+.locations h3,
+.amenities h3 {
+	font-weight: 600;
+	margin: 0;
+}
+
+.locations h4,
+.amenities h4 {
+	font-weight: 400;
+	font-size: 14px;
+	margin: 0;
+}
+
+.locations {
+	border-right: 1px solid #ddd;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.popover {
+	display: none;
+}
+
+.locations:hover .popover,
+.amenities:hover .popover {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 24px;
+	position: absolute;
+	top: 70px;
+	left: -1px;
+	width: 92%;
+	background-color: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding-left: 8%;
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.popover ul {
+	padding-left: 10%;
+	padding-top: 2px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: 90%;
+}
