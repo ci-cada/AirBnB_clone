@@ -3,4 +3,8 @@ header {
     width: 100%;
     background-color: white;
     border-bottom: 1px solid #CCCCCC;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
