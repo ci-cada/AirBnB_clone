@@ -1,44 +1,54 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>
-        </title>
-        <link href="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon.png" rel="icon">
-        <link href="styles/4-common.css" rel="stylesheet">
-        <link href="styles/3-header.css" rel="stylesheet">
-        <link href="styles/3-footer.css" rel="stylesheet">
-		    <link href="styles/6-filters.css" rel="stylesheet">
+        <title>AirBnb Clone</title>
+        <link rel="stylesheet" href="styles/4-common.css">
+        <link rel="stylesheet" href="styles/3-header.css">
+        <link rel="stylesheet" href="styles/3-footer.css">
+        <link rel="stylesheet" href="styles/6-filters.css">
+         <link rel="icon" href="images/icon.png" type="image/png">
     </head>
     <body>
         <header>
             <div class="logo"></div>
-                </header>
-		<div class="container">
-			<section class="filters">
+        </header>
+        <div class="container">
+            <section class="filters">
+                <button type="button">Search</button>
                 <div class="locations">
                     <h3>States</h3>
-                    <h4>Califonia, Thika,,</h4>
+                    <h4>California, Arizona...</h4>
                     <ul class="popover">
-                        <li>New York</li>
-                        <li>Kansas</li>
-                        <li>Riverdalle</li>
+                        <li><h2>Arizona:</h2></li>
+                        <li>
+                            <ul class="popover_list">
+                                <li>Page</li>
+                                <li>Page2</li>
+                            </ul>
+                        </li>
+                        <li><h2>California:</h2></li>
+                        <li>
+                                <ul class="popover_list">
+                                    <li>San Francisco</li>
+                                    <li>Los Altos</li>
+                                </ul>
+                            </li>
                     </ul>
                 </div>
                 <div class="amenities">
                     <h3>Amenities</h3>
-                    <h4>Internet,kitchen,</h4>
+                    <h4>Internet, Kitchen...</h4>
                     <ul class="popover">
                         <li>Internet</li>
-                        <li>kitchen</li>
-                        <li>Conference room</li>
-
+                        <li>TV</li>
+                        <li>Kitchen</li>
+                        <li>Iron</li>
                     </ul>
                 </div>
-
-				<button>Search</button>
-			</section>
-		</div>
-                <footer>
-                        Best School
-                </footer>
+            </section>
+        </div>
+        <footer>
+            Best School
+        </footer>
+    </body>
 </html>

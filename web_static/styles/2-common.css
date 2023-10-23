@@ -1,8 +1,4 @@
 body {
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    flex-direction: centre;
-    justify-content: space-between;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
 }
